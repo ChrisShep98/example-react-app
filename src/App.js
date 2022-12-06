@@ -1,48 +1,63 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Button from "./components/Button";
 
 function App() {
+  
+  // Here im using useRef to grab the value from the input (calendar) the user sets with the ref attribute. useRef will then return a mutable object whose .current property is given the value of the input. Then using a template literal to set the query param of the url.
+  // I view useRef as a way to just grab a single value of something. It reminds me of doing something like document.querySelector('input').value but correct me if im wrong. useState could also work here? So it's a little confusing.
   const inputRef = useRef(null);
+
+
+  // Here I am using useState() to get/set the state of variables using array destructuring. When the page is freshly reloaded, all the states below will return to their inital value which is an empty string and an empty array for favItem.
+  const [date, setDate] = useState("");
   const [picture, setPicture] = useState("");
-  const [video, setVideo] = useState("");
   const [title, setTitle] = useState("");
   const [explanation, setExplanation] = useState("");
-
-  let favId = 0;
   const [favItem, setFavItem] = useState([]);
 
-  function getFetch() {
-    fetch(
-      `https://api.nasa.gov/planetary/apod?api_key=zU71SV2z8UAS2tpSRxtx9Ii4giGUAk6QIufK4bCn&date=${inputRef.current.value}`
-    )
+  useEffect(() => {
+    const renderData = async () => {
+      const dataFromAPI = await getFetch()
+      console.log(dataFromAPI)
+      // setPicture(data.hdurl);
+      // setTitle(data.title);
+      // setExplanation(data.explanation);
+      // setDate(data.date)
+    }
+    renderData()
+  }, [])
+
+
+// When the "Get Picture" button is clicked the function below will run and update the states of date, picture, title, and explanation, which will also update what is being displayed on the DOM.
+// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ look at react demo
+
+  const getFetch = async() => {
+    const res = await fetch(`https://api.nasa.gov/planetary/apod?api_key=zU71SV2z8UAS2tpSRxtx9Ii4giGUAk6QIufK4bCn&date=${inputRef.current.value}`)
       .then((res) => res.json())
       .then((data) => {
+        return data
         // console.log(data)
-        // console.log(inputRef.current.value)
-        if (data.media_type === "image") {
-          setPicture(data.hdurl);
-        } else if (data.media_type === "video") {
-          setVideo(data.url);
-        }
-        setTitle(data.title);
-        setExplanation(data.explanation);
-      });
+        // setPicture(data.hdurl);
+        // setTitle(data.title);
+        // setExplanation(data.explanation);
+        // setDate(data.date)
+      })
   }
 
+
+
+
+// When the "Add to Favorites" button is clicked this function updates the state of the favItem variable and adds the current states of data, picture, title, and explanation as a new object to the array.
   function addToFav() {
-    setFavItem([
-      ...favItem,
-      { date: `${inputRef.current.value}`, picture: picture },
-    ]);
+    setFavItem([...favItem, { date: date, picture: picture, title: title, explanation: explanation },]);
+
   }
 
-  // function addToFav(){
-  //   setFavItem([
-  //     ...favItem,
-  //     {id: favId++ , date: `${inputRef.current.value}`}
-  //   ])
-  // }
-  console.log(favItem);
+  // No idea why this is console logged twice when you add a photo to favorites
+  if(favItem.length !== 0){
+    console.log(favItem);
+  }
+  
 
   return (
     <div className="container mx-auto flex justify-center items-center">
@@ -52,7 +67,7 @@ function App() {
           <input
             className="bg-white hover:bg-gray-100 text-gray-800 font-semibold border border-gray-400 rounded shadow h-8"
             type="date"
-            ref={inputRef}
+            ref={inputRef} onChange={useEffect}
           ></input>
           <Button text={"Get Picture"} onClick={getFetch}></Button>
           <Button text={"View Favorites"} />
@@ -60,7 +75,8 @@ function App() {
             <img className="" src={picture} alt=""></img>
             {/* <iframe src={video} frameBorder={'0'} title={'video'}></iframe> */}
             <div className="self-center">
-              <h2 className="underline pb-3">{title}</h2>
+              <h2 className="underline">{title}</h2>
+              <span>{date}</span>
               <p>{explanation}</p>
               <Button text={"Add to Favorites"} onClick={addToFav} />
             </div>
