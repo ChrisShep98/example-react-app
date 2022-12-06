@@ -17,12 +17,12 @@ function App() {
 
   useEffect(() => {
     const renderData = async () => {
-      const dataFromAPI = await getFetch()
-      console.log(dataFromAPI)
-      // setPicture(data.hdurl);
-      // setTitle(data.title);
-      // setExplanation(data.explanation);
-      // setDate(data.date)
+      const data = await getFetch()
+      // console.log(data)
+      setPicture(data.hdurl);
+      setTitle(data.title);
+      setExplanation(data.explanation);
+      setDate(data.date)
     }
     renderData()
   }, [])
@@ -32,7 +32,7 @@ function App() {
 // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ look at react demo
 
   const getFetch = async() => {
-    const res = await fetch(`https://api.nasa.gov/planetary/apod?api_key=zU71SV2z8UAS2tpSRxtx9Ii4giGUAk6QIufK4bCn&date=${inputRef.current.value}`)
+    return fetch(`https://api.nasa.gov/planetary/apod?api_key=zU71SV2z8UAS2tpSRxtx9Ii4giGUAk6QIufK4bCn&date=${inputRef.current.value}`)
       .then((res) => res.json())
       .then((data) => {
         return data
