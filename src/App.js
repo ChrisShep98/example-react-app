@@ -6,6 +6,9 @@ function App() {
   // Here im using useRef to grab the value from the input (calendar) the user sets with the ref attribute. useRef will then return a mutable object whose .current property is given the value of the input. Then using a template literal to set the query param of the url.
   // I view useRef as a way to just grab a single value of something. It reminds me of doing something like document.querySelector('input').value but correct me if im wrong. useState could also work here? So it's a little confusing.
   const inputRef = useRef(null);
+  // use to clear input from calendar instead and probably useState() here.
+
+
 
 
   // Here I am using useState() to get/set the state of variables using array destructuring. When the page is freshly reloaded, all the states below will return to their inital value which is an empty string and an empty array for favItem.
