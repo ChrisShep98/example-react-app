@@ -12,7 +12,7 @@ function App() {
   const [favItem, setFavItem] = useState([]);
   
 
-  // Here I'm using the useEffect hook which will 
+  // Here I'm using the useEffect hook which is fetching from a NASA api that returns an object of the Astronomy photo of that day. Whenever the date state is updated by the user it will run this useEffect and pull the specific url using a query param and set all the states data, picture, title, and explanation, which will then be displayed in the DOM. useEffect also has a cleanup feature if I chose to return something within the function.
 
   useEffect(() => {
     fetch(
@@ -30,7 +30,7 @@ function App() {
 
 
 
-  // When the "Add to Favorites" button is clicked this function updates the state of the favItem variable and adds the current states of data, picture, title, and explanation as a new object to the array.
+  // When the "Add to Favorites" button is clicked this function updates the state of the favItem variable and adds the current states of data, picture, title, and explanation as a new object to the array. It is currently not being displayed in the DOM but can be viewed in the console.
   if (favItem.length !== 0) {
     console.log(favItem);
   }
