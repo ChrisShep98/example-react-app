@@ -1,5 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, createContext } from "react";
 import Button from "./components/Button";
+import ContextComponent from "./components/ContextComponent";
+import { ThemeProvider } from "./components/ThemeContext";
+import TestComponent from "./components/TestComponent";
 
 function App() {
 
@@ -37,6 +40,9 @@ function App() {
 
   return (
     <div className="container mx-auto flex justify-center items-center">
+      <ThemeProvider>
+        <ContextComponent />
+        <TestComponent className='text-red-600' text={'hellooooooo testing context lorum iplumplum'}/>
       <div className="text-center mt-20 border">
         <h1>Astronomy Picture of the Day</h1>
         <div>
@@ -45,22 +51,10 @@ function App() {
             type="date"
             onChange={(e) => setDate(e.target.value)}
           ></input>
-          <Button
-            text={"Add to Favorites"}
-            onClick={() =>
-              setFavItem([
-                ...favItem,
-                {
-                  title: title,
-                  date: date,
-                  picture: picture,
-                  explanation: explanation,
-                },
-              ])
-            }
+          <Button text={"Add to Favorites"} onClick={() => setFavItem([...favItem, {title: title, date: date, picture: picture, explanation: explanation, },])}
           ></Button>
           {/* <Button text={"View Favorites"} /> */}
-          <div className="bg-slate-400 w-full h-picHeight flex">
+          <div className="w-full h-picHeight flex">
             <img className="" src={picture} alt=""></img>
             {/* <iframe src={video} frameBorder={'0'} title={'video'}></iframe> */}
             <div className="self-center">
@@ -69,15 +63,9 @@ function App() {
               <p>{explanation}</p>
             </div>
           </div>
-
-          {/* <div className='bg-red-500 w-full h-picHeight'>
-          <h2>{title}</h2>
-          <img className='w-full h-full object-contain' src={picture} alt=''></img>
-          <iframe src={video} frameBorder={'0'} title={'video'}></iframe>
-          <p className=''>{explanation}</p>
-        </div> */}
         </div>
       </div>
+      </ThemeProvider>
     </div>
   );
 }
