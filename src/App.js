@@ -12,8 +12,6 @@ function App() {
     inputDate.current.focus()
   }
 
-
-
   // Here I am using useState() to get/set the state of variables using array destructuring. When the page is freshly reloaded, all the states below will return to their inital value which is an empty string and an empty array for favItem.
   const [date, setDate] = useState("");
   const [picture, setPicture] = useState("");
