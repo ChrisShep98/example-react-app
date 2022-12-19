@@ -2,7 +2,6 @@ import React, { useEffect, useState, useRef, createContext } from "react";
 import Button from "./components/Button";
 import ContextComponent from "./components/ContextComponent";
 import { ThemeProvider } from "./components/ThemeContext";
-import TestComponent from "./components/TestComponent";
 
 function App() {
 
@@ -47,7 +46,6 @@ function App() {
     <div className="container mx-auto flex justify-center items-center">
       <ThemeProvider>
         <ContextComponent />
-        <TestComponent className='text-red-600' text={'hellooooooo testing context lorum iplumplum'}/>
       <div className="text-center mt-20 border">
         <h1>Astronomy Picture of the Day</h1>
         <div>
