@@ -11,7 +11,7 @@ const ContextComponent = () => {
     }
   return (
     <div>
-         <Button onClick={toggleTheme} text={'toggleTheme'}></Button>
+        <Button onClick={toggleTheme} text={'toggleTheme'}></Button>
         <div style={themeStyles}>ContextComponent</div>
     </div>
   )
