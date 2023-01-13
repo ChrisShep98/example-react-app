@@ -1,15 +1,16 @@
 import React, { useEffect, useState, useRef, createContext } from "react";
 import Button from "./components/Button";
+import Input from "./components/Input";
 import ContextComponent from "./components/ContextComponent";
 import { ThemeProvider } from "./components/ThemeContext";
 
 function App() {
 
-  const inputDate = useRef()
+  // const inputDate = useRef()
 
-  function focusInput(){
-    inputDate.current.focus()
-  }
+  // function focusInput(){
+  //   inputDate.current.focus()
+  // }
 
   // Here I am using useState() to get/set the state of variables using array destructuring. When the page is freshly reloaded, all the states below will return to their inital value which is an empty string and an empty array for favItem.
   const [date, setDate] = useState("");
@@ -49,12 +50,13 @@ function App() {
       <div className="text-center mt-20 border">
         <h1>Astronomy Picture of the Day</h1>
         <div>
-          <input
+          <Input onChange={(e) => setDate(e.target.value)} />
+          {/* <input
             className="bg-white hover:bg-gray-100 text-gray-800 font-semibold border border-gray-400 rounded shadow h-8"
             type="date" ref={inputDate}
             onChange={(e) => setDate(e.target.value)}
-          ></input>
-          <Button text={'Select Date'} onClick={focusInput} />
+          ></input> */}
+          {/* <Button text={'Select Date'} onClick={focusInput} /> */}
           <Button text={"Add to Favorites"} onClick={() => setFavItem([...favItem, {title: title, date: date, picture: picture, explanation: explanation, },])}
           ></Button>
           {/* <Button text={"View Favorites"} /> */}
