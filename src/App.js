@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, createContext } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "./components/Button";
 import Input from "./components/Input";
 import ContextComponent from "./components/ContextComponent";
@@ -44,9 +44,10 @@ function App() {
   }
 
   return (
+    <ThemeProvider>
+        
     <div className="container mx-auto flex justify-center items-center">
-      <ThemeProvider>
-        <ContextComponent />
+    <ContextComponent />
       <div className="text-center mt-20 border">
         <h1>Astronomy Picture of the Day</h1>
         <div>
@@ -71,8 +72,8 @@ function App() {
           </div>
         </div>
       </div>
-      </ThemeProvider>
     </div>
+    </ThemeProvider>
   );
 }
 
