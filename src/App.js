@@ -5,7 +5,6 @@ import ContextComponent from "./components/ContextComponent";
 import { ThemeProvider } from "./components/ThemeContext";
 
 function App() {
-
   // const inputDate = useRef()
 
   // function focusInput(){
@@ -18,7 +17,6 @@ function App() {
   const [title, setTitle] = useState("");
   const [explanation, setExplanation] = useState("");
   const [favItem, setFavItem] = useState([]);
-  
 
   // Here I'm using the useEffect hook which is fetching from a NASA api that returns an object of the Astronomy photo of that day. Whenever the date state is updated by the user it will run this useEffect and pull the specific url using a query param and set all the states data, picture, title, and explanation, which will then be displayed in the DOM. useEffect also has a cleanup feature if I chose to return something within the function.
 
@@ -36,42 +34,52 @@ function App() {
       });
   }, [date]);
 
-
-
   // When the "Add to Favorites" button is clicked this function updates the state of the favItem variable and adds the current states of data, picture, title, and explanation as a new object to the array. It is currently not being displayed in the DOM but can be viewed in the console.
   if (favItem.length !== 0) {
     console.log(favItem);
   }
 
   return (
-    <ThemeProvider> 
-    <div className="container mx-auto flex justify-center items-center">
-    <ContextComponent />
-      <div className="text-center mt-20 border">
-        <h1>Astronomy Picture of the Day</h1>
-        <div>
-          <Input onChange={(e) => setDate(e.target.value)} />
-          {/* <input
+    <ThemeProvider>
+      <div className="container mx-auto flex justify-center items-center">
+        <ContextComponent />
+        <div className="text-center mt-20 border">
+          <h1>Astronomy Picture of the Day</h1>
+          <div>
+            <Input onChange={(e) => setDate(e.target.value)} />
+            {/* <input
             className="bg-white hover:bg-gray-100 text-gray-800 font-semibold border border-gray-400 rounded shadow h-8"
             type="date" ref={inputDate}
             onChange={(e) => setDate(e.target.value)}
           ></input> */}
-          {/* <Button text={'Select Date'} onClick={focusInput} /> */}
-          <Button text={"Add to Favorites"} onClick={() => setFavItem([...favItem, {title: title, date: date, picture: picture, explanation: explanation, },])}
-          ></Button>
-          {/* <Button text={"View Favorites"} /> */}
-          <div className="w-full h-picHeight flex">
-            <img className="" src={picture} alt=""></img>
-            {/* <iframe src={video} frameBorder={'0'} title={'video'}></iframe> */}
-            <div className="self-center">
-              <h2 className="underline">{title}</h2>
-              <span>{date}</span>
-              <p>{explanation}</p>
+            {/* <Button text={'Select Date'} onClick={focusInput} /> */}
+            <Button
+              text={"Add to Favorites"}
+              onClick={() =>
+                setFavItem([
+                  ...favItem,
+                  {
+                    title: title,
+                    date: date,
+                    picture: picture,
+                    explanation: explanation,
+                  },
+                ])
+              }
+            ></Button>
+            {/* <Button text={"View Favorites"} /> */}
+            <div className="w-full h-picHeight flex">
+              <img className="" src={picture} alt=""></img>
+              {/* <iframe src={video} frameBorder={'0'} title={'video'}></iframe> */}
+              <div className="self-center">
+                <h2 className="underline">{title}</h2>
+                <span>{date}</span>
+                <p>{explanation}</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
     </ThemeProvider>
   );
 }
