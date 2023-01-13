@@ -44,8 +44,7 @@ function App() {
   }
 
   return (
-    <ThemeProvider>
-        
+    <ThemeProvider> 
     <div className="container mx-auto flex justify-center items-center">
     <ContextComponent />
       <div className="text-center mt-20 border">
