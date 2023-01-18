@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Button from "./components/Button";
 import Input from "./components/Input";
 import Body from "./components/Body";
+import ListOfFavorties from "./components/ListOfFavorties";
 import ContextComponent from "./components/ContextComponent";
 import { ThemeProvider } from "./components/ThemeContext";
 
@@ -48,12 +49,14 @@ function App() {
     <ThemeProvider>
       <Body>
         <ContextComponent />
-        <div class="absolute bg-white w-popup top-1/2 left-1/2 -ml-96 -mt-72 shadow-md rounded-lg pb-4" style={viewFavorites ? {display: 'flex'} : {display: 'none'} }>
-          <div class="container mx-auto flex flex-wrap justify-center items-center">
-            <div class="container flex justify-center">
-              <li>{favItem.map((el) => console.log(el))}</li>
-            </div>
-          </div>
+        <div className="absolute bg-white w-popup top-1/2 left-1/2 -ml-96 -mt-72 shadow-md rounded-lg pb-4" style={viewFavorites ? {display: 'flex'} : {display: 'none'} }>
+          {/* <div className="container mx-auto flex flex-wrap justify-center items-center">
+            <div className="container flex justify-center"> */}
+              {favItem.map((el) => {
+                <li>{el.title}</li>
+              })}
+            {/* </div>
+          </div> */}
         </div>
         <div className="text-center mt-20" style={viewFavorites ? {filter: 'blur(2px)'} : {filter: 'blur(0px)'} }>
           <h1>Astronomy Picture of the Day</h1>
