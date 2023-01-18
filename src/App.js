@@ -3,6 +3,7 @@ import Button from "./components/Button";
 import Input from "./components/Input";
 import ContextComponent from "./components/ContextComponent";
 import { ThemeProvider } from "./components/ThemeContext";
+import Body from "./components/Body";
 
 function App() {
   // const inputDate = useRef()
@@ -41,7 +42,7 @@ function App() {
 
   return (
     <ThemeProvider>
-      <div className="container mx-auto flex justify-center items-center">
+      <Body>
         <ContextComponent />
         <div className="text-center mt-20 border">
           <h1>Astronomy Picture of the Day</h1>
@@ -79,7 +80,7 @@ function App() {
             </div>
           </div>
         </div>
-      </div>
+      </Body>
     </ThemeProvider>
   );
 }
