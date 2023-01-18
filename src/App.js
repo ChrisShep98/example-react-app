@@ -68,7 +68,7 @@ function App() {
                 ])
               }
             ></Button>
-            {/* <Button text={"View Favorites"} /> */}
+            <Button text={`View Favorites (${favItem.length})`} />
             <div className="w-full h-picHeight flex">
               <img className="" src={picture} alt=""></img>
               {/* <iframe src={video} frameBorder={'0'} title={'video'}></iframe> */}
