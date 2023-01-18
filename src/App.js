@@ -21,6 +21,8 @@ function App() {
 
   // Here I'm using the useEffect hook which is fetching from a NASA api that returns an object of the Astronomy photo of that day. Whenever the date state is updated by the user it will run this useEffect and pull the specific url using a query param and set all the states data, picture, title, and explanation, which will then be displayed in the DOM. useEffect also has a cleanup feature if I chose to return something within the function.
 
+  const [viewFavorites, setViewFavorites] = useState(false)
+
   useEffect(() => {
     fetch(
       `https://api.nasa.gov/planetary/apod?api_key=zU71SV2z8UAS2tpSRxtx9Ii4giGUAk6QIufK4bCn&date=${date}`
@@ -40,11 +42,20 @@ function App() {
     console.log(favItem);
   }
 
+  console.log(viewFavorites)
+
   return (
     <ThemeProvider>
       <Body>
         <ContextComponent />
-        <div className="text-center mt-20">
+        <div class="absolute bg-white w-popup top-1/2 left-1/2 -ml-96 -mt-72 shadow-md rounded-lg pb-4" style={viewFavorites ? {display: 'flex'} : {display: 'none'} }>
+          <div class="container mx-auto flex flex-wrap justify-center items-center">
+            <div class="container flex justify-center">
+              <li>{favItem.map((el) => console.log(el))}</li>
+            </div>
+          </div>
+        </div>
+        <div className="text-center mt-20" style={viewFavorites ? {filter: 'blur(2px)'} : {filter: 'blur(0px)'} }>
           <h1>Astronomy Picture of the Day</h1>
           <div>
             <Input onChange={(e) => setDate(e.target.value)} />
@@ -68,7 +79,7 @@ function App() {
                 ])
               }
             ></Button>
-            <Button text={`View Favorites (${favItem.length})`} />
+            <Button text={`View Favorites (${favItem.length})`} onClick={() => setViewFavorites(true)} />
             <div className="w-full h-picHeight flex">
               <img className="" src={picture} alt=""></img>
               {/* <iframe src={video} frameBorder={'0'} title={'video'}></iframe> */}
