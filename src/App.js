@@ -44,7 +44,7 @@ function App() {
     <ThemeProvider>
       <Body>
         <ContextComponent />
-        <div className="text-center mt-20 border">
+        <div className="text-center mt-20">
           <h1>Astronomy Picture of the Day</h1>
           <div>
             <Input onChange={(e) => setDate(e.target.value)} />
