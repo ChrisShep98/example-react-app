@@ -53,9 +53,9 @@ function App() {
           {/* <div className="container mx-auto flex flex-wrap justify-center items-center">
             <div className="container flex justify-center"> */}
               {favItem.map((el) => {
-
-                // add ListOfFavorites component here
-                <li>{el.title}</li>
+                return (
+                  <ListOfFavorties title={el.title} />
+                )
               })}
             {/* </div>
           </div> */}
