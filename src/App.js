@@ -53,7 +53,7 @@ function App() {
           <div className="container mx-auto flex flex-wrap justify-center items-center ">
               {favItem.map((el) => {
                 return (
-                  <ListOfFavorties title={`${picture}`}/>
+                  <ListOfFavorties photo={picture}/>
                 )
               })}
           </div>
