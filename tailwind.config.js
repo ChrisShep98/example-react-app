@@ -8,6 +8,9 @@ module.exports = {
     extend: {
       height: {
         picHeight: '80vh'
+      },
+      width: {
+        popup: '48rem'
       }
     },
   },
