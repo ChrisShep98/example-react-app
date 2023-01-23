@@ -49,11 +49,11 @@ function App() {
     <ThemeProvider>
       <Body>
         <ContextComponent />
-        <div className="absolute bg-white w-popup top-1/2 left-1/2 -ml-96 -mt-72 shadow-md rounded-lg pb-4" style={viewFavorites ? {display: 'flex'} : {display: 'none'} }>
-          <div className="container mx-auto flex flex-wrap justify-center items-center">
+        <div className="absolute bg-white w-popup top-1/2 left-1/2 -ml-96 -mt-72 shadow-md rounded-lg pb-4 z-10" style={viewFavorites ? {display: 'flex'} : {display: 'none'} }>
+          <div className="container mx-auto flex flex-wrap justify-center items-center ">
               {favItem.map((el) => {
                 return (
-                  <ListOfFavorties title={el.title} />
+                  <ListOfFavorties title={`${picture}`}/>
                 )
               })}
           </div>
@@ -84,7 +84,7 @@ function App() {
             ></Button>
             <Button text={`View Favorites (${favItem.length})`} onClick={() => setViewFavorites(true)} />
             <div className="w-full h-picHeight flex">
-              {/* <img className="" src={picture} alt=""></img> */}
+              <img className="" src={picture} alt=""></img>
               {/* <iframe src={video} frameBorder={'0'} title={'video'}></iframe> */}
               <div className="self-center">
                 <h2 className="underline">{title}</h2>

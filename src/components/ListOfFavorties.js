@@ -4,7 +4,7 @@ import React from 'react'
 
 function ListOfFavorties({title}) {
   return (
-    <li>{title}</li>
+    <img src={title} alt=''></img>
   )
 }
 
