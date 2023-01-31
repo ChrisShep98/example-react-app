@@ -27,7 +27,7 @@ function App() {
     )
       .then((res) => res.json())
       .then((data) => {
-        // console.log(data)
+        console.log(data)
         setDate(data.date);
         setPicture(data.hdurl);
         setTitle(data.title);
@@ -49,7 +49,7 @@ function App() {
           <div className="container mx-auto flex flex-wrap justify-center items-center ">
               {favItem.map((el) => {
                 return (
-                  <ListOfFavorties photo={el.picture} name={el.title} linkToPic={el.hdurl}/>
+                  <ListOfFavorties photo={el.picture} name={el.title} linkToPic={el.picture}/>
                 )
               })}
           </div>
