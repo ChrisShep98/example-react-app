@@ -52,7 +52,7 @@ function App() {
                   <ListOfFavorties photo={el.picture} name={el.title} linkToPic={el.picture}/>
                 )
               })}
-              <button onClick={() => setViewFavorites(false)}>Close</button>
+              <Button text={"Close"} onClick={() => setViewFavorites(false)} />
           </div>
         </div>
         <div className="text-center mt-20" style={viewFavorites ? {filter: 'blur(2px)'} : {filter: 'blur(0px)'} }>
