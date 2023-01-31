@@ -5,7 +5,7 @@ import React from 'react'
 function ListOfFavorties({photo, name, linkToPic}) {
   return (
     <div>
-      <a href={linkToPic}><img src={photo} className="w-64 h-64 p-2" alt=''></img></a>
+      <a href={linkToPic} target="_blank" rel="noreferrer"><img src={photo} className="w-64 h-64 p-2" alt=''></img></a>
       <span className='flex justify-center text-sm'>{name}</span>
     </div>
   )
