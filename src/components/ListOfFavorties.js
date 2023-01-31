@@ -4,7 +4,7 @@ import React from 'react'
 
 function ListOfFavorties({photo}) {
   return (
-    <img src={photo} alt=''></img>
+    <img src={photo} className="w-64 h-64 p-2" alt=''></img>
   )
 }
 
