@@ -49,7 +49,7 @@ function App() {
           <div className="container mx-auto flex flex-wrap justify-center items-center ">
               {favItem.map((el) => {
                 return (
-                  <ListOfFavorties photo={el.picture}/>
+                  <ListOfFavorties photo={el.picture} name={el.title} linkToPic={el.hdurl}/>
                 )
               })}
           </div>
